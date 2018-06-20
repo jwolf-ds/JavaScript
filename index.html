@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript</title>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<!-- 
+	Purpose: test your jquery skills
+	
+	Instruction:
+	
+	1. Create a HTML section with a title, div containing paragraph of text (random text)
+	
+	2. Create a small form in html below the section above with one input text only.
+	
+	3. Add a submit button.
+	
+	4. Write jasvascript using jquery which will do the following:
+	
+	- Code will fire on form submit.
+	
+	- Prevent the form from submitting as usual (prevent the post method on same page).
+	
+	- Get the value entered in the input field.
+	
+	- Make the div and the title above the form fade away (300ms).
+	
+	- Add the value you got from the input field above the form, wrapping it in a h1 tag and have the text color red.
+	
+	- Finally disable the button (not hidden but disabled).
+	
+	Extra points: validate the input to make sure it is not empty.	
+	
+	-->
+	
+	<script>
+	
+	
+	</script>
+	
+  </head>
+  <body>
+  	<section>
+  		<h2>
+    		Title
+    	</h2>
+    	<div>
+    		<p>
+    			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    		</p>
+    	</div>
+  	</section>
+  	<form id="demoTest" action="some.html">
+  		Name: <input type="text" name="userName" id="inputName">
+  		<br>
+  		<input type="submit" value="Submit" id="btnSubmit">
+  	</form>
+    
+    <script>
+    	$( "#demoTest" ).submit(function( e ) {
+    		e.preventDefault();
+    		if ($( "input" ).val() !== "") {
+    			var nameUserName = $( "input" ).val();
+  				$( "h2, p" ).fadeOut( 300 ).queue(function(showValue) {
+        			$("section").html("<h1 style='color:red'>" + nameUserName + "</h1>");
+        			showValue();
+        		});
+        		$("#btnSubmit").attr("disabled", true);
+        	} else {
+        		$( "#inputName" ).attr("placeholder", "Please Enter Your Name").attr("style","color:red");
+        	}
+
+		});
+	</script>
+  </body>
+</html>
